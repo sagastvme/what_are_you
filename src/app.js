@@ -17,15 +17,17 @@ app.get('',(req, res)=>{
 app.post('/test',(req, res)=>{
 
 
-      res.render('result', {
-          name:'nadal',image:'rafa.jpg'
-      })
-
+      res.redirect('/nadal')
       // res.render('result', {
       //     name:'federer'
       // })
 
     // res.send(req.body.talent);
+})
+app.get('/nadal',(req, res)=>{
+    res.render('result', {
+        name:'nadal',image:'rafa.jpg'
+    })
 })
 
 
