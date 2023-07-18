@@ -13,11 +13,14 @@ app.set('views', views_path )
 app.set('view engine','hbs')
 
 app.get('',(req, res)=>{
-    res.render('index',{
-        name:'edu'
-    });
+    res.send(req.query['products'])
 })
 
+
+
+app.get('*',(req, res)=>{
+    res.render('error_page');
+})
 
 
 
