@@ -14,7 +14,7 @@ app.post('/test',(req, res)=>{
 
   if(req.body.talent==='option1'){
       res.render('result', {
-          name:'nadal'
+          name:'nadal',
       })
   }else{
       res.render('result', {
