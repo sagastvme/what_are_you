@@ -44,6 +44,8 @@
     "mime-db": "^1.52.0",
     "mime-types": "^2.1.35",
     "minimist": "^1.2.8",
+    "mongodb": "^5.7.0",
+    "mongoose": "^7.4.0",
     "ms": "^2.0.0",
     "negotiator": "^0.6.3",
     "neo-async": "^2.6.2",
