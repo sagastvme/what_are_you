@@ -17,7 +17,6 @@ app.get('',(req, res)=>{
 })
 app.post('/test',(req, res)=>{
 
-
       res.redirect('/nadal')
       // res.render('result', {
       //     name:'federer'
