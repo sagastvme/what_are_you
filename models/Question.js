@@ -1,10 +1,8 @@
 const mongoose = require('mongoose');
-
-// Create a Schema for the Question
-const questionSchema = new mongoose.Schema({
+const Schema = mongoose.Schema;
+const QuestionSchema = new Schema({
     id: {
         type: String, // You can change the data type if needed (String, Number, etc.)
-        required: true,
         unique: true,
     },
     question: {
@@ -15,9 +13,6 @@ const questionSchema = new mongoose.Schema({
         type: String,
         required: true,
     }],
-});
+})
 
-// Create the Question model using the schema
-const Question = mongoose.model('Question', questionSchema);
-
-module.exports = Question;
+module.exports = QuestionSchema;

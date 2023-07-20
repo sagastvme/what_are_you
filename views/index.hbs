@@ -9,6 +9,12 @@
 
 <body>
  <h1 class="mt-1 text-center">Which tennis player are you?</h1>
+
+ <ul class="people_list">
+     {{#each answers}}
+         <li>{{this}}</li>
+     {{/each}}
+ </ul>
 <div class="container  d-flex flex-column align-items-center justify-content-center" >
 
     <form method="post" action="/test">
