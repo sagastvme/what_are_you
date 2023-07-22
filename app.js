@@ -7,9 +7,7 @@ const {findQuestionById, getAllQuestions,insert} = require('./database_managemen
 
 app.get('', async (req, res) => {
     try {
-
         const questions = await getAllQuestions();
-        console.log(questions);
         res.render('index', { questions: questions });
     } catch (error) {
         console.log(error);
@@ -25,9 +23,12 @@ app.post('/test',(req, res)=>{
     // res.send(req.body.talent);
 })
 app.get('/nadal',(req, res)=>{
+    const name = 'nadal';
+    let image = name + '.jpg';
     res.render('result', {
-        name:'nadal',image:'rafa.jpg'
-    })
+        name,
+        image
+    });
 })
 
 
