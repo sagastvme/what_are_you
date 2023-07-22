@@ -9,119 +9,22 @@
 
 <body>
  <h1 class="mt-1 text-center">Which tennis player are you?</h1>
-
- <ul class="people_list">
-     {{#each answers}}
-         <li>{{this}}</li>
-     {{/each}}
- </ul>
 <div class="container  d-flex flex-column align-items-center justify-content-center" >
 
     <form method="post" action="/test">
-        <p class="mt-2">What's more important to you, trophies or talent? (1 talent - 3 trophies)</p>
+        {{#each questions}}
+            <p class="mt-2">{{this.question}}</p>
         <div class="container">
-            <div class="form-check form-switch form-check-inline">
-                <input class="form-check-input" type="radio" id="talent1" name="talent" value="trophies">
-                <label class="form-check-label" for="talent1">Trophies</label>
-            </div>
-            <div class="form-check form-switch form-check-inline">
-                <input class="form-check-input" type="radio" id="talent2" name="talent" value="talent">
-                <label class="form-check-label" for="talent2">Talent</label>
-            </div>
-        </div>
 
-        <p class="mt-5">Do you prefer aggressive or defensive gameplay?</p>
-        <div class="container">
-            <div class="form-check form-switch form-check-inline">
-                <input class="form-check-input" type="radio" id="gameplay1" name="gameplay" value="aggressive">
-                <label class="form-check-label" for="gameplay1">Aggressive</label>
-            </div>
-            <div class="form-check form-switch form-check-inline">
-                <input class="form-check-input" type="radio" id="gameplay2" name="gameplay" value="defensive">
-                <label class="form-check-label" for="gameplay2">Defensive</label>
-            </div>
+            {{#each this.answers}}
+                <div class="form-check form-switch form-check-inline">
+                    <input class="form-check-input" type="radio"  name="{{../question}}" value="{{this}}">
+                    <label class="form-check-label" for="">{{this}}</label>
+                </div>
+            {{/each}}
         </div>
+            {{/each}}
 
-        <p class="mt-5">Which tennis surface do you enjoy playing on the most? (Grass, clay, hard court, or indoor)</p>
-        <div class="container">
-            <div class="form-check form-switch form-check-inline">
-                <input class="form-check-input" type="radio" id="surface1" name="surface" value="grass">
-                <label class="form-check-label" for="surface1">Grass</label>
-            </div>
-            <div class="form-check form-switch form-check-inline">
-                <input class="form-check-input" type="radio" id="surface2" name="surface" value="clay">
-                <label class="form-check-label" for="surface2">Clay</label>
-            </div>
-            <!-- Add more surface options here if needed -->
-        </div>
-
-        <p class="mt-5">What is your favorite shot in tennis? (Forehand, backhand, serve, volley)</p>
-        <div class="container">
-            <div class="form-check form-switch form-check-inline">
-                <input class="form-check-input" type="radio" id="shot1" name="shot" value="forehand">
-                <label class="form-check-label" for="shot1">Forehand</label>
-            </div>
-            <div class="form-check form-switch form-check-inline">
-                <input class="form-check-input" type="radio" id="shot2" name="shot" value="backhand">
-                <label class="form-check-label" for="shot2">Backhand</label>
-            </div>
-            <div class="form-check form-switch form-check-inline">
-                <input class="form-check-input" type="radio" id="shot3" name="shot" value="serve">
-                <label class="form-check-label" for="shot3">Serve</label>
-            </div>
-            <div class="form-check form-switch form-check-inline">
-                <input class="form-check-input" type="radio" id="shot4" name="shot" value="volley">
-                <label class="form-check-label" for="shot4">Volley</label>
-            </div>
-        </div>
-
-        <p class="mt-5">Are you more emotional or composed on the court?</p>
-        <div class="container">
-            <div class="form-check form-switch form-check-inline">
-                <input class="form-check-input" type="radio" id="emotion1" name="emotion" value="emotional">
-                <label class="form-check-label" for="emotion1">Emotional</label>
-            </div>
-            <div class="form-check form-switch form-check-inline">
-                <input class="form-check-input" type="radio" id="emotion2" name="emotion" value="composed">
-                <label class="form-check-label" for="emotion2">Composed</label>
-            </div>
-        </div>
-
-        <p class="mt-5">Where are you from?</p>
-        <div class="container">
-            <div class="form-check form-switch form-check-inline">
-                <input class="form-check-input" type="radio" id="location1" name="location" value="Europe">
-                <label class="form-check-label" for="location1">Europe</label>
-            </div>
-            <div class="form-check form-switch form-check-inline">
-                <input class="form-check-input" type="radio" id="location2" name="location" value="America">
-                <label class="form-check-label" for="location2">America</label>
-            </div>
-            <div class="form-check form-switch form-check-inline">
-                <input class="form-check-input" type="radio" id="location3" name="location" value="Asia">
-                <label class="form-check-label" for="location3">Asia</label>
-            </div>
-            <div class="form-check form-switch form-check-inline">
-                <input class="form-check-input" type="radio" id="location4" name="location" value="Africa">
-                <label class="form-check-label" for="location4">Africa</label>
-            </div>
-            <div class="form-check form-switch form-check-inline">
-                <input class="form-check-input" type="radio" id="location5" name="location" value="Oceania">
-                <label class="form-check-label" for="location5">Oceania</label>
-            </div>
-        </div>
-
-        <p class="mt-5">Do you suffer from injuries?</p>
-        <div class="container">
-            <div class="form-check form-switch form-check-inline">
-                <input class="form-check-input" type="radio" id="injuries1" name="injuries" value="yes">
-                <label class="form-check-label" for="injuries1">Yes</label>
-            </div>
-            <div class="form-check form-switch form-check-inline">
-                <input class="form-check-input" type="radio" id="injuries2" name="injuries" value="no">
-                <label class="form-check-label" for="injuries2">No</label>
-            </div>
-        </div>
 
         <input type="submit" class="btn mt-2 btn-primary" value="Send">
         <!-- You can add more radio buttons or other form elements here -->

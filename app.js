@@ -1,22 +1,20 @@
 const {app} = require("./imports");
-const {findQuestionById} = require('./database_management')
+const {findQuestionById, getAllQuestions,insert} = require('./database_management')
 // Assuming the findQuestionById function returns a Promise
 
 
 
 
-app.get('',(req, res)=>{
+app.get('', async (req, res) => {
+    try {
 
-    findQuestionById('64b94f5201c3943f0f709154')
-        .then((result) => {
-            console.log('hola', result.answers);
-            res.render('index', {answers:result.answers})
-        })
-        .catch((error) => {
-            console.error('Error occurred:', error);
-        });
-
-})
+        const questions = await getAllQuestions();
+        console.log(questions);
+        res.render('index', { questions: questions });
+    } catch (error) {
+        console.log(error);
+    }
+});
 app.post('/test',(req, res)=>{
 
       res.redirect('/nadal')

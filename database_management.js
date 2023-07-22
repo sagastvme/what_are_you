@@ -16,7 +16,7 @@ const QuestionSchema = require('./models/Question')
 // Compile model from schema
 const Question = mongoose.model("Question", QuestionSchema);
 
-const awesome_instance = new Question({  question: 'who do you like better', answers:[1,2,3] });
+const awesome_instance = new Question({  question: 'What\'s more important to you, trophies or talent?', answers:['Trophies', 'Talent'] });
 // insert().then(r => console.log('inserted new question'))
 // Save the new model instance asynchronously
 async function insert(){
@@ -33,8 +33,17 @@ async function findQuestionById(questionId) {
         throw error; // You can handle the error here or pass it to the caller
     }
 }
-
+async function getAllQuestions() {
+    try {
+        const questions = await Question.find({});
+        return questions;
+    } catch (error) {
+        throw error;
+    }
+}
 
 module.exports={
-    findQuestionById
+    findQuestionById,
+    getAllQuestions,
+    insert
 }
