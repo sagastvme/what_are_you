@@ -16,6 +16,8 @@ const QuestionSchema = require('./models/Question')
 // Compile model from schema
 const Question = mongoose.model("Question", QuestionSchema);
 
+const player = require('./models/Player')
+const PlayerSchema = mongoose.model('Player', player)
 const awesome_instance = new Question({  question: 'What\'s more important to you, trophies or talent?', answers:['Trophies', 'Talent'] });
 // insert().then(r => console.log('inserted new question'))
 // Save the new model instance asynchronously
@@ -42,8 +44,24 @@ async function getAllQuestions() {
     }
 }
 
+async function getAllPlayers(){
+    console.log('buscando')
+    const players = await PlayerSchema.find({});
+  console.log(players)
+    return players;
+
+}
+async function findPlayer(name){
+    const player = await PlayerSchema.findOne( {key_name:name})
+return player
+}
+
+
+
 module.exports={
     findQuestionById,
     getAllQuestions,
-    insert
+    insert,
+    getAllPlayers
+    ,findPlayer
 }

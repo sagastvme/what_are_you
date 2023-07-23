@@ -5,11 +5,20 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>{{name}}</title>
     <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="/css/bootstrap.css">
+
 </head>
 <body>
-{{name}}
-<img src="/images/{{image}}" alt="">
+<div class="alert text-center alert-success mt-2">
+
+    <p>Congratulations the tennis player you are more similar to is {{name}}</p>
+</div>
+<div class="text-center">
+    <!-- Assuming this code is inside your HTML template -->
+    <img src="/images/{{image}}" class="rounded w-100 w-md-50" alt="{{name}}">
+
+</div>
 </body>
 </html>

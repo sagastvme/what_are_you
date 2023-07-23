@@ -1,5 +1,5 @@
 const {app} = require("./imports");
-const {findQuestionById, getAllQuestions,insert} = require('./database_management')
+const {findQuestionById, getAllQuestions,insert,getAllPlayers, findPlayer} = require('./database_management')
 // Assuming the findQuestionById function returns a Promise
 
 
@@ -12,22 +12,46 @@ app.get('', async (req, res) => {
     } catch (error) {
         console.log(error);
     }
+
 });
-app.post('/test',(req, res)=>{
+app.post('/test',async (req, res) => {
 
-      res.redirect('/nadal')
-      // res.render('result', {
-      //     name:'federer'
-      // })
+    // res.redirect('/nadal')
+    const players = await getAllPlayers();
+    console.log(req.body)
+    const answers =new Set(Object.values(req.body))
+// res.send(answers)
+    const results=[]
+    players.map( (player)=>{
+   let count = 0
+        player.information.forEach( (info)=>{
+            if(answers.has(info)){
+                count++
+            }
+        } )
+        results.push({ 'count': count, 'player': player });
 
-    // res.send(req.body.talent);
+    } )
+    const bigger = results.reduce((prev, current) => {
+        if (current.count > prev.count) {
+            return current;
+        } else {
+            return prev;
+        }
+    });
+
+   res.redirect('/'+bigger.player.key_name)
+
 })
-app.get('/nadal',(req, res)=>{
-    const name = 'nadal';
-    let image = name + '.jpg';
+app.get('/:player',async (req, res) => {
+    const player = req.params.player
+    const tennis_player = await findPlayer(player)
+    if (!tennis_player) {
+        return res.render('error')
+    }
     res.render('result', {
-        name,
-        image
+        name:tennis_player['name'],
+    image:tennis_player['image']
     });
 })
 
