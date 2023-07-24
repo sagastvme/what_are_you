@@ -10,16 +10,24 @@
 <body>
  <h1 class="mt-4 text-center">Which tennis player are you?</h1>
 <div class="container  d-flex flex-column align-items-center justify-content-center" >
-
-    <form method="post" action="/test">
+    {{#if errors}}
+        <div class="alert alert-danger">
+            <ul>
+                {{#each errors}}
+                    <li>{{this.msg}}</li>
+                {{/each}}
+            </ul>
+        </div>
+    {{/if}}
+    <form method="post" action="/">
         {{#each questions}}
             <p class="mt-2">{{this.question}}</p>
         <div class="container">
 
             {{#each this.answers}}
                 <div class="form-check form-switch form-check-inline">
-                    <input class="form-check-input" type="radio"  name="{{../question}}" value="{{this}}">
-                    <label class="form-check-label" for="">{{this}}</label>
+                    <input class="form-check-input" type="radio"  name="{{../question}}" id="{{this}}" value="{{this}}">
+                    <label class="form-check-label" for="{{this}}">{{this}}</label>
                 </div>
             {{/each}}
         </div>

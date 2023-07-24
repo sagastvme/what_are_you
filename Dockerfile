@@ -11,4 +11,4 @@ RUN npm install nodemon
 RUN npm install -g npm@9.8.1
 COPY . .
 
-CMD ["npm", "run", "start"]
+CMD ["npm", "run", "dev"]
