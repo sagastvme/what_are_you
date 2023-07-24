@@ -55,6 +55,9 @@ async function findPlayer(name){
     const player = await PlayerSchema.findOne( {key_name:name})
 return player
 }
+function insertDB(){
+    
+}
 
 
 
